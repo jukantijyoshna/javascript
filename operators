@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Hello world</h1>
+    <script>
+      //JAVASCRIPT DAY02
+      let b = 3.5;
+      let a = "3.5";
+      console.log(`hello ${4.6}`);
+      document.write(`hello ${1.2}`, "<br>");
+      console.log(typeof b);
+      console.log(typeof a);
+      document.write(b + a, "<br>");
+
+      let s = "josh";
+      let n = 5;
+      document.write(`Iam ${s} and Iam ${n} years old`, "<br>");
+      document.write(`reactjs student ${"="} saikumar`,"<br>");
+      let x=null
+      console.log(typeof(x))
+      document.write("Arithmetic operator","<br>")
+      let m=10;
+      let l=5;
+      document.write("modulo operator: "+m%l,"<br>");
+      document.write("division operator: "+m/l,"<br>");
+      document.write("exponential operator: "+m**l,"<br>");
+      document.write("increment operator: "+m++,"<br>");
+      document.write("decrement operator: "+m--,"<br>");
+
+      //assignment op
+      document.write("Assignment operator","<br>")
+      let c=10;
+      let d=5;
+      document.write("addition assignment operator: "+(c+=10),"<br>");
+      document.write("subtraction assignment operator: "+(c-=10),"<br>");
+      document.write("multiplication assignment operator: "+(c*=10),"<br>");
+      document.write("division assignment operator: "+(c/=10),"<br>");
+      //logical op
+      document.write("Logical operator","<br>")
+      let e=10;
+      let f=5;
+      document.write("AND operator: "+(e>5 && f<5),"<br>");
+      document.write("OR operator: "+(e>5 || f<5),"<br>");
+      document.write("NOT operator: "+!(e>5),"<br>");
+      
+      //comparision op
+      document.write("Comparision operator","<br>")
+      let g=10;
+      let h=5;
+      document.write("equal to operator: "+(g==h),"<br>");
+      document.write("not equal to operator: "+(g!=h),"<br>");
+      document.write("greater than operator: "+(g>h),"<br>");
+      document.write("less than operator: "+(g<h),"<br>");
+      document.write("greater than or equal to operator: "+(g>=h),"<br>");
+      document.write("less than or equal to operator: "+(g<=h),"<br>");
+      document.write("eual operator which checks the data type: "+(g===h),"<br>");
+      document.write("not equal operator which checks the data type: "+(g!==h),"<br>");
+
+      //conditional op
+      document.write("Conditional operator","<br>")
+      let i=10;
+      let j=5;
+      document.write("if condition: "+(i>j?"i is greater than j":"i is less than j"),"<br>");
+      document.write("if else condition: "+(i>j?"i is greater than j":"i is less than j"),"<br>")
+      let ab=40;
+      let r=(ab>40)?"AC off":"AC on"
+
+      <!-- document.write(alert("alert message")) -->
+      let name=prompt("enter ur name:")
+      alert(name)
+      console.log(name)
+      let aa=prompt()
+      let bb=prompt()
+      let aaa=parseInt(aa)
+      let bbb=parseInt(bb)
+      let sum=aaa+bbb
+      alert(sum)
+      
+      document.write(aa+bb)
+      console.log(aa+bb)
+
+    </script>
+  </body>
+</html>
