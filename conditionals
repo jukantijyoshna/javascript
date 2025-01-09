@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello world</h1>
+    <h2>Conditional Statements in JAVASCRIPT</h2>
+    <script>
+        let a=4;
+        let b=5;
+        if(a<b){
+            document.write("a is less than b","<br>");
+        }
+        else if(a==b){
+            document.write("a is equal to b","<br>");
+        }
+        else{
+            document.write("a is greater than b","<br>");
+        }
+
+        let age=prompt("enter ur age");
+        let name=prompt("enter ur name");
+    
+        if(age>=18){
+            alert(name+" is eligible to vote");
+        }
+        else{
+            alert(name+" is not eligible to vote");
+        }
+
+        let m=Number(prompt())
+        let n=Number(prompt());
+        if((m>300 || m>300) &&(m+n)<500){
+            document.wtite("team up");
+            alert("team up");
+            console.log("team")
+        }else{
+            document.write("cannot team up");
+            console.log("no team")
+        }
+    </script>
+</body>
+</html>
