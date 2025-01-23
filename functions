@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function greet(name){
+            console.log("Hello, "+name);
+        }
+        let name=prompt("enter ur name")
+        greet(name)
+
+        function add(a,b){
+            <!-- console.log(a+b); -->
+            return a+b;
+        }
+        let a=parseInt(prompt("enter num1: "))
+        let b=parseInt(prompt("enter num2: "))
+        console.log(add(a,b))
+
+        sum=function(n1,n2){
+            return n1+n2;
+        }
+        console.log(sum(1,4))
+
+        //prime numners are not
+        let j=10;
+        for(let i=2;i<100;i++){
+            if(j%i==0){
+                console.log("not a prime number");
+                break;
+            }
+            console.log("prime numbers")
+        }
+
+        
+    </script>
+</body>
+</html>
