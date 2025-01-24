@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr=()=>{
+            console.log("arrow function ")
+        }
+        arr()
+        //arrow function vth parameter
+        let c=(a,b)=>{
+            return a+b;
+
+        }
+        console.log(c(1,2))
+        //without paranthesis
+        let greet=x=>console.log(x);
+
+        //using ternary operator
+        greet("greeting");
+        let age=18;
+        let check=(age<18)?()=>console.log("less than 18 years"):()=>console.log("eligible to vote")
+            check()
+        function task1(){
+            console.log("task1")
+        }
+        function task2(){
+            console.log("task2")
+        }
+        function task3(){
+            console.log("task3")
+        }
+        task1()
+        task2()
+        task3()
+
+        //timeout method
+        console.log("hi abc");
+        setTimeout(()=>{
+            console.log("waiting for 2000")
+        },2000);
+        console.log("no waiting")
+
+        function greeti(name,callback){
+            console.log(`Hello,${name}`)
+            callback()
+        }
+        function saygoodbye(){
+            console.log("goodbye")
+        }
+        greeti("same",saygoodbye)
+    </script>
+</body>
+</html>
