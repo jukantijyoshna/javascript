@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function greeti(name,callback){
+            console.log(`Hello,${name}`)
+            callback()
+        }
+        function saygoodbye(){
+            console.log("goodbye")
+        }
+        greeti("sam",saygoodbye)
+
+        function mainfunction(callback,){
+             console.log("main function")
+            callback()
+
+          
+        }
+        function callbackfunc(){
+            console.log("callback function")
+        }
+        const arrow=()=>{
+            console.log("arrow function")
+        }
+        mainfunction(arrow,callbackfunc)
+        
+        function fetchData(callback){
+            console.log("fetching");
+           
+        
+        setTimeout(function(){
+            console.log("data fetched")
+            callback()
+        },2000);
+    }
+        function processData(){
+            console.log("processing data");
+        }
+        fetchData(processData);
+    </script>
+</body>
+</html>
