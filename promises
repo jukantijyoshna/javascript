@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let myprom=new Promise((resolve,reject)=>{
+            let success=true;
+            if(success){
+                resolve("Promise resolved");
+            }
+            else{
+                reject("rejected")
+            }
+        })
+        myprom.then((result)=>{
+            console.log(result);
+        })
+        myprom.catch(error=>{
+            console.log(error);
+        })
+
+        let prom=new Promise((resolve,reject)=>{
+            resolve(5);
+        })
+        prom
+        .then(result=>{
+            console.log(result);
+            return new Promise((resolve)=>{
+                setTimeout(() => {
+                    resolve(result*2);
+                    }, 2000);
+            }) 
+        })
+       .then(result=>{
+            console.log(result);
+            return new Promise((resolve)=>{
+                setTimeout(() => {
+                    resolve(result+3);
+                },5000);
+            });
+        })
+        .then(result=>{
+            console.log(result);
+        })
+        .then(error=>{
+            console.log(error);
+        })
+        let pp=new Promise((resolve,reject)=>{
+            setTimeout(resolve)
+        })
+    </script>
+</body>
+</html>
