@@ -1,0 +1,40 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .b{
+            color: blue;
+        }
+        .c{
+            color: red;
+        }
+        .a{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="b" Id="id1">mallesh</h1>
+    <h1 class="a">venkat</h1>
+    <h1 class="c">ramya</h1>
+    <h1 class="a">hari</h1>
+    <h1 class="b">anusha</h1>
+    <h1 class="c">josh</h1>
+    <h1 class="a">liki</h1>
+    <h1 class="b">pooj</h1>
+    <script>
+        let x=document.getElementById("id1")
+        console.log(x)
+        let y=document.getElementsByClassName("a")
+        console.log(y)
+        let z=document.getElementsByTagName("h1")
+        console.log(z)
+        for(let i=0;i<z.length;i++){
+            console.log(z[i])
+        }
+    </script>
+</body>
+</html>
