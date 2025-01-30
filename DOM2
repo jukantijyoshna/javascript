@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>removing childnode</h1>
+    <h2>Iam in hyd</h2>
+    <ul>
+        <li>ram</li>
+        <li>seeta</li>
+        <li>laxman</li>
+    </ul>
+    <div id="a">
+        <h1>krishna</h1>
+        <h1>arjuna</h1>
+        <h1>yuddham</h1>
+    </div>
+    <div id="b">
+        <h1>saripodha</h1>
+        <h1>sanivaaram</h1>
+    </div>
+    <script>
+        const ul=document.querySelector('ul')
+        const lists=document.querySelectorAll('li')
+        console.log(ul);
+        console.log(lists)
+        for(const li of lists){
+            console.log(`removing: ${li.textContent}`)
+            ul.removeChild(li)
+            console.log(li)
+           // console.log(lists)
+            
+        }
+
+        let n=document.createElement('h2');
+        n.textContent='iam in banglore'
+        //get the parent element
+        let c=document.getElementById('a');
+        c.appendChild(n);
+        console.log(c.innerText);
+    </script>
+</body>
+</html>
