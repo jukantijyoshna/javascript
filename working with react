@@ -1,0 +1,24 @@
+import logo from './logo.svg';
+import './App.css';
+import HelloWorld from './components/helloworld';
+import WelcomeJ from './components/welcome';
+function Nameis(){
+  return <h1>My name is Jyoshna</h1>;
+}
+function App() {
+  return (
+    <div className="App">
+      <div>
+        <HelloWorld/>
+        <Nameis/>
+
+      </div>
+      <div style={{textAlign:'center',color:'green'}}> 
+        <WelcomeJ name="Jyoshna" greeting="good morning!!" />
+        <WelcomeJ name="Jyoshna" greeting="afernoon!!" />
+      </div>
+    </div>
+  );
+}
+
+export default App;
