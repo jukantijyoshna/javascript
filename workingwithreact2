@@ -1,0 +1,46 @@
+import React from 'react';
+const FruitList=()=>{
+    const fruits=["apple","banana","cherry"];
+    return(
+        <div>
+            <h1>Fruits list</h1>
+            <ul>
+            {fruits.map((fruit,index)=>{
+                return <li key={index}>{fruit}</li>;
+                })}
+                </ul>
+        </div>
+    );
+}
+export default FruitList;
+
+
+
+import logo from './logo.svg';
+import './App.css';
+import HelloWorld from './components/helloworld';
+import WelcomeJ from './components/welcome';
+import Greeting from './components/greeting';
+import FruitList from './components/FruitList';
+function Nameis(){
+  return <h1>My name is Jyoshna</h1>;
+}
+function App() {
+  return (
+    <div className="App">
+      <div>
+        <HelloWorld/>
+        <Nameis/>
+      <Greeting isLoggedIn={true}/>   
+      <FruitList/>     
+          </div>
+      {/* <div style={{textAlign:'center',color:'green'}}> 
+        <WelcomeJ name="Jyoshna" greeting="good morning!!" />
+        <WelcomeJ name="Jyoshna" greeting="afernoon!!" />
+      </div> */}
+
+    </div>
+  );
+}
+
+export default App;
