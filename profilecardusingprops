@@ -1,0 +1,59 @@
+import React from 'react';
+const ProfileCard=({name,greeting,imageSrc})=>{
+    return(
+        <div className="profile-card col-md-6">
+             <img className='image' src={imageSrc} alt="" />
+            <h1 className='name'>{name}</h1>
+            <h2 className='greeting'>{greeting}</h2>
+      
+        </div>
+    );
+}
+export default ProfileCard;
+
+
+import './App.css';
+import ProfileCard from './components/profilecard';
+
+
+function App() {
+  return (
+    <div className="App">
+      <ProfileCard name ="Jyoshna" greeting="Good morning" imageSrc="https://media.istockphoto.com/id/1403500817/photo/the-craggies-in-the-blue-ridge-mountains.jpg?s=612x612&w=0&k=20&c=N-pGA8OClRVDzRfj_9AqANnOaDS3devZWwrQNwZuDSk=" />
+
+
+    </div>
+  );
+}
+
+export default App;
+.profile-card{
+  margin:20px;
+  padding:20px;
+  background-color: #f8f68e;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+}
+.name{
+  font-size: 40px;
+  font-weight: bold;
+  margin:20px;
+}
+.greeting{
+  font-size: 40px;
+  font-weight: bold;
+  margin:20px;
+}
+.image{
+  
+  border-width: 50px;
+  border-color: black;
+  border:10px;
+  border-radius:20px;
+  height: 200px;
+  width:200px;
+  
+}
