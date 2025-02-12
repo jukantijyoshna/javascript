@@ -1,0 +1,41 @@
+import React from "react";
+import {memo} from "react";
+function Child1(){
+    return <div>
+        <h1>Child 1</h1>
+    </div>;
+}
+export default memo(Child1);
+import React from "react";
+const Child2=({count,increment,decrement})=>{
+    return (<div className="button-increment-decrement">
+        <h1>Count:{count}</h1>
+
+        <button className="incdecbtn btn-primary" onClick={increment}>increment</button>
+        <button className="incdecbtn btn-danger" onClick={decrement}>decrement</button>
+
+    </div>);
+}
+export default Child2;
+import { useState } from 'react';
+import './App.css';
+import ProfileCard from './components/profilecard';
+import Child1 from './components/child1';
+import Child2 from './components/child2';
+function Parent(){
+  const[count,setCount]=useState(0);
+  const increment=()=>{
+    setCount(c=>c+1);
+  }
+  const decrement=()=>{
+    setCount(c=>c-1);
+  }
+  return (
+    <div class='APPcss col-md-9'>
+      <Child1/>
+      <Child2 count={count} increment={increment} decrement={decrement}/>
+    </div>
+
+  );
+}
+export default Parent;
