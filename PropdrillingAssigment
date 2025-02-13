@@ -1,0 +1,21 @@
+import React,{createContext,useContext} from'react';
+import './App.css';
+const DataContext=createContext()
+const Profile=({name,email})=>{
+  const data=useContext(DataContext)
+  return <div>
+    <h1>{data.name}</h1>
+    <h2>{data.email}</h2>
+  </div>
+}
+function App(){
+  const data={name:"josh",email:"Josh@gmail.com"};
+  return (
+    <div className="App">
+    <DataContext.Provider value={data}>
+      <Profile/>
+    </DataContext.Provider>
+    </div>
+  )
+}
+export default App;
