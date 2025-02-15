@@ -1,0 +1,149 @@
+import React,{useState,useEffect,useRef} from 'react';
+
+function CounterWithPrev(){
+    const [count, setCount] = useState(0);
+    const prevcountref=useRef();
+    useEffect(() => {
+        prevcountref.current = count;
+        }, [count]);
+        return (
+            <div className='container'>
+                <p>Count:<span style={{color:'green',margin:'5px'}}>{count}</span></p>
+                <p>Previous Count: <span style={{color:'red',margin:'5px'}}>{prevcountref.current}</span></p>
+                <button className='btn-primary m-2 p-2' onClick={() => setCount(count + 1)}>Increment</button>
+
+            </div>
+        );
+}
+export default CounterWithPrev;
+
+import React from 'react';
+import CounterWithPrev from './components/countervthprev';
+import './App.css'
+const App = () => {
+  return (
+    <div className="items">
+     <CounterWithPrev/>
+    </div>
+  );
+};
+
+export default App;
+
+
+
+for assigmnet
+import React, { createContext, useReducer } from 'react';
+
+// Create context
+export const ListContext = createContext();
+
+// Initial state (empty list)
+const initialState = [];
+
+// Reducer function to manage adding and removing items
+const listReducer = (state, action) => {
+  switch (action.type) {
+    case 'ADD_ITEM':
+      return [...state, action.payload];
+    case 'REMOVE_ITEM':
+      return state.filter(item => item.id !== action.payload);
+    default:
+      return state;
+  }
+};
+
+// ListProvider component to provide the state and dispatch function
+export const ListProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(listReducer, initialState);
+
+  return (
+    <ListContext.Provider value={{ state, dispatch }}>
+      {children}
+    </ListContext.Provider>
+  );
+};
+
+import React, { useState, useContext } from 'react';
+import { ListContext } from './ListContext';
+
+const AddItem = () => {
+  const { dispatch } = useContext(ListContext);
+  const [newItem, setNewItem] = useState('');
+
+  const handleAddItem = () => {
+    if (newItem.trim()) {
+      const newItemObject = { id: Date.now(), name: newItem };
+      dispatch({ type: 'ADD_ITEM', payload: newItemObject });
+      setNewItem('');
+    }
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={newItem}
+        onChange={(e) => setNewItem(e.target.value)}
+        placeholder="Enter new item"
+      />
+      <button onClick={handleAddItem}>Add Item</button>
+    </div>
+  );
+};
+
+export default AddItem;
+
+
+import React, { useContext, useMemo } from 'react';
+import { ListContext } from './ListContext';
+
+const ItemList = () => {
+  const { state, dispatch } = useContext(ListContext);
+
+  // Use useMemo to optimize re-rendering
+  const memoizedItems = useMemo(() => {
+    return state;
+  }, [state]);
+
+  const handleRemoveItem = (id) => {
+    dispatch({ type: 'REMOVE_ITEM', payload: id });
+  };
+
+  return (
+    <div>
+      <h3>Items List ({memoizedItems.length})</h3>
+      <ul>
+        {memoizedItems.map(item => (
+          <li key={item.id}>
+            {item.name}
+            <button onClick={() => handleRemoveItem(item.id)}>Remove</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default ItemList;
+
+import React from 'react';
+import { ListProvider } from './ListContext';
+import AddItem from './AddItem';
+import ItemList from './ItemList';
+
+const App = () => {
+  return (
+    <ListProvider>
+      <div>
+        <h1>Item Management App</h1>
+        <AddItem />
+        <ItemList />
+      </div>
+    </ListProvider>
+  );
+};
+
+export default App;
+
+
