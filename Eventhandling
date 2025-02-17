@@ -1,0 +1,69 @@
+import React,{useState} from 'react';
+import './App.css'
+
+-- const handleClick=()=>{
+--   alert('Button clicked');
+-- }
+
+-- const App = () => {
+--   return (
+--     <div className="App">
+      
+--     <button onClick={handleClick}>Click here</button>
+--     </div>
+--   );
+-- };
+
+-- export default App;
+
+
+-- const App = () => {
+--   const[text,setText]=useState("")
+--   const handleChange=(event)=>{
+--     setText(event.target.value)
+--   }
+--   return (
+--     <div className="App">
+      
+--     <input type="text" value={text} onChange={handleChange}/>
+--     <p>Your text:{text}</p>
+--     </div>
+--   );
+-- };
+
+-- export default App;
+
+
+// const App = () => {
+//   const[isHovered,setIsHovered]=useState(false);
+//   const handleMouseEnter=()=>{
+//     setIsHovered(true);
+//   }
+//   const handleMouseLeave=()=>{
+//     setIsHovered(false);
+//   }
+//   return (
+//     <div className="App">
+//       <button onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} style={{backgroundColor:isHovered?'lightblue':'lightpink',color:isHovered?'blue':'black',border:'5px solid green',borderRadius:'12px'}}>
+//       Hover here
+//       </button>
+//       {isHovered ?<p>Mouse is over the button</p>:<p>Mover is not hovered on the button</p>}
+//     </div>
+//   );
+// };
+function App(){
+  const[key,setKey]=useState("");
+  const handleKeydown=(event)=>{
+    setKey(event.key)
+  }
+  return(
+    <div className="App">
+      <h1>
+        Welcome to react application
+      </h1>
+      {key&& <h1>Pressed key:</h1>}
+      <input type="text" value="key" onKeyDown={handleKeydown} placeholder='enter '/>
+      </div>
+  )
+}
+export default App;
