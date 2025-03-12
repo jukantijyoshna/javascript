@@ -1,0 +1,91 @@
+
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import Laptops from './components/laptops.jsx'
+import Watches from './components/watches.jsx'
+import App from './App.jsx'
+import Mobiles from './components/mobiles.jsx'
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    
+    <div className="m-5">
+    
+      <h1>Mobiles Section</h1>
+    <Mobiles></Mobiles>
+    
+    <h1>Laptops Section</h1>
+    <Laptops></Laptops>
+    <Watches></Watches>
+    </div>
+  </StrictMode>,
+)
+import axios from "axios";
+
+import { useState,useEffect } from "react";
+const Watches=()=>{
+    const [watches,setWatches]=useState([]);
+    const get_watches=async()=>{
+        const res=await axios.get("http://localhost:8081/watches")
+        const {data}=res;
+        setWatches(data);
+    }
+    useEffect(()=>{
+        get_watches();
+    },[])
+    return(
+        <>
+        <div className="parent">
+            {
+                watches.map((element,index)=>{
+                    return(
+                        <div className="child" key={index}>
+                            <img className="image" src={element.image}/>
+                            <h2>{element.name}</h2>
+                            <h4>{element.cost}</h4>
+                            <h4>{element.qty}</h4>
+                        </div>
+                    );
+                })
+                    
+            }
+        </div>
+        </>
+    );
+}
+export default Watches;
+
+import axios from "axios";
+
+import { useState,useEffect } from "react";
+const Laptops=()=>{
+    const [laptops,setLaptops]=useState([]);
+    const get_laptops=async()=>{
+        const res=await axios.get("http://localhost:8081/laptops")
+        const {data}=res;
+        setLaptops(data);
+    }
+    useEffect(()=>{
+        get_laptops();
+    },[])
+    return(
+        <>
+        <div className="parent">
+            {
+                laptops.map((element,index)=>{
+                    return(
+                        <div className="child" key={index}>
+                            <img className="image" src={element.image}/>
+                            <h2>{element.name}</h2>
+                            <h4>{element.cost}</h4>
+                            <h4>{element.qty}</h4>
+                        </div>
+                    );
+                })
+                    
+            }
+        </div>
+        </>
+    );
+}
+export default Laptops;
