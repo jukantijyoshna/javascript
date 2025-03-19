@@ -1,0 +1,116 @@
+import {useCart} from "./cartContext";
+import {useNavigate} from "react-router-dom";
+import "./Cart.css";
+
+const Cart = () =>{
+    const {cart, removeFromCart} = useCart();
+    const navigate = useNavigate();
+
+    const totalPrice = cart.reduce((acc,item) => acc + item.pcost * item.quantity,0);
+
+    return(
+        <div className="cart-container">
+            <button className="back-button cart-black" onClick={() => navigate(-1)}>Back</button>
+
+            <h2>Your cart</h2>
+            {cart.length === 0?(
+                <p>Cart is empty</p>
+            ):(
+                <div>
+                    {cart.map(item =>(
+                        <div key={item.id} className="cart-item">
+                            <img src={item.pimage} alt={item.pname}/>
+                            <div>
+                                <h3>{item.pname}</h3>
+                                <p>Type: {item.type}</p>
+                                <p>Price: ${item.pcost}</p>
+                                <p>Quantity: {item.quantity}</p>
+                                <button onClick={() => removeFromCart(item.id)}>Remove</button>
+                            </div>
+                        </div>
+                    ))}
+                    <h3>Total: {totalPrice}</h3>
+                </div>
+            )}
+        </div>
+    )
+}
+
+export default Cart;
+
+
+import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useCart } from "./cartContext";
+import "./productdetails.css";
+import { Link } from "react-router-dom";
+import "./carticon.css";
+
+const ProductDetails = () => {
+    const { type, id } = useParams();
+    const navigate = useNavigate();
+    const [product, setProduct] = useState(null);
+    const { addToCart, cart } = useCart();
+    const [quantity, setQuantity] = useState(1);
+
+    useEffect(() => {
+        axios.get(`http://localhost:8081/${type}`)
+            .then((res) => {
+                const item = res.data.find(prod => prod.id === parseInt(id)); // Fixed find method
+                setProduct(item);
+            })
+            .catch((error) => {
+                console.error("Error fetching product details:", error);
+            });
+    }, [type, id]);
+
+    if (!product) return <p>Loading...</p>;
+
+    return (
+        <div className="productdetails">
+            <Link to="/cart">({cart.length})</Link>
+
+            <button className="backbtn" onClick={() => navigate(-1)}>Back</button>
+
+            <img src={product.pimage} alt={product.pname} />
+
+            <h2><i className="fa fa-rupee"></i>{product.pcost}</h2>
+
+            <div className="quantity-controls">
+                <button onClick={() => setQuantity(prev => Math.min(prev + 1, product.pqty))}>+</button>
+                <span>{quantity}</span>
+                <button onClick={() => setQuantity(prev => Math.max(prev - 1, 1))}>-</button>
+            </div>
+
+         
+            <button onClick={() => addToCart(product, quantity)}>Add to Cart</button>
+        </div>
+    );
+};
+
+export default ProductDetails;
+import {Link,Outlet} from "react-router-dom";
+import {useCart} from "./cartContext";
+const Dashboard=()=>{
+    const { cart }=useCart();
+
+    return(
+        
+        <div className="dashboard-container">
+            {/* Cart Icon with Superscript Count */}
+            <Link to="/cart" className="cart-icon">
+            {cart.length>0 && <span className="cart-count">{cart.length}</span>}
+            </Link>
+            <nav className="dashboard-nav">
+                <Link to="">Laptops</Link>
+                <Link to="mobiles">Mobiles</Link>
+                <Link to='="watches'>Watches</Link>
+            </nav>
+            <div className="dashboard-content">
+                <Outlet/>
+            </div>
+        </div>
+    );
+};
+export default Dashboard;
